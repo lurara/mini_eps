@@ -1,0 +1,10 @@
+
+Após ter realizado os testes de desempenho para as duas versões, pude perceber um vertiginoso aumento de velocidade no tempo de execução de bench.lua 
+na versão otimizada comparada (em média, 23,6204s) à não otimizada (em média, 60,7848s); o que, em contrapartida, resultou em um custo maior de tempo
+de compilação (0m14,064s e 0m5,086s). Além disso, a variância indica que há maior dispersão dos testes realizados na versão não otimizada comparada à
+otimizada (2,0182837 e 0,0707683, respectivamente). Todos esses dados resultam apenas da alteração de algumas flags para a compilação do programa - o
+que, neste caso, indica um impacto positivo, sem necessidade de alteração do código fonte (isso já é otimizado a partir das flags). Embora o custo de
+compilação seja mais alto caso otimizado, o uso prático das flags é extreamemnte vantajoso (iremos executar mais vezes do que compilar o programa). É
+interessante ressaltar, contudo, que nem sempre o uso de flags pode ser interessante, visto que algumas opções de "otimização" podem acabar quebrando
+o programa fonte, ao invés de acelerar sua execução (e.g. no caso de "-O3"). Além disso, a flag "-fomit-frame-pointer" torna a opção de debug quase 
+inutilizável, o que não é interessante enquanto para o período de desenvolvimento do programa.

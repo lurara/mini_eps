@@ -1,0 +1,40 @@
+tempo de compilação com -O0: 
+real	0m6,080s
+user	0m5,086s
+sys	0m0,881s
+
+tempo de execução (bench.lua) com -O0:
+1. user	0m59,600s
+2. user	1m0,178s
+3. user	0m59,534s
+4. user	1m2,073s
+5. user	1m2,539s
+Média: ((59,6) + (60,178) + (59,534) + (62,073) + (62,539))÷5 = 60,7848
+Variância: ((59,6-60,7848)^2 + (60,178-60,7848)^2 + (59,534-60,7848)^2 + (62,073-60,7848)^2 + (62,539-60,7848)^2)÷4 = 2,0182837
+
+--
+flags utilizadas: -O2 -march=native -pipe -fomit-frame-pointer
+
+tempo de compilação com flags e sem -O0:
+real	0m14,678s
+user	0m14,064s
+sys	0m1,010s
+
+tempo de execução (bench.lua) com flags e sem -O0:
+1. user	0m23,724s
+2. user	0m23,591s
+3. user	0m23,883s
+4. user	0m23,722s
+5. user	0m23,182s
+Média: ((23,724) + (23,591) + (23,883) + (23,722) + (23,182))÷5 = 23,6204
+Variância: ((23,724-23,6204)^2 + (23,591-23,6204)^2 + (23,883-23,6204)^2 + (23,722-23,6204)^2 + (23,182-23,6204)^2)÷4 = 0,0707683
+
+Após ter realizado os testes de desempenho para as duas versões, pude perceber um vertiginoso aumento de velocidade no tempo de execução de bench.lua 
+na versão otimizada comparada (em média, 23,6204s) à não otimizada (em média, 60,7848s); o que, em contrapartida, resultou em um custo maior de tempo
+de compilação (0m14,064s e 0m5,086s). Além disso, a variância indica que há maior dispersão dos testes realizados na versão não otimizada comparada à
+otimizada (2,0182837 e 0,0707683, respectivamente). Todos esses dados resultam apenas da alteração de algumas flags para a compilação do programa - o
+que, neste caso, indica um impacto positivo, sem necessidade de alteração do código fonte (isso já é otimizado a partir das flags). Embora o custo de
+compilação seja mais alto caso otimizado, o uso prático das flags é extreamemnte vantajoso (iremos executar mais vezes do que compilar o programa). É
+interessante ressaltar, contudo, que nem sempre o uso de flags pode ser interessante, visto que algumas opções de "otimização" podem acabar quebrando
+o programa fonte, ao invés de acelerar sua execução (e.g. no caso de "-O3"). Além disso, a flag "-fomit-frame-pointer" torna a opção de debug quase 
+inutilizável, o que não é interessante enquanto para o período de desenvolvimento do programa.
