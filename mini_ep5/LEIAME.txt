@@ -1,0 +1,3 @@
+Tive que deletar as opções large e huge de txt. caso queira testar este ep novamente, terá que 
+descompactar os txts do zip(local)!
+o huge foi mudado para o conteudod do medium
