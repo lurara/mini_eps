@@ -1,0 +1,8 @@
+Nome: Lara Ayumi Nagamatsu
+Menor delay: 375ms
+Dado dois computadores similares, porém um com o dobro de núcleos e outro com
+o dobro da frequência da CPU, em qual delesse obteria o menor valor para o delay base?
+R: Tanto a maior frequência do clock quanto o maior número de núcleos podem beneficiar a
+velocidade do programa. Entretanto, em um computador com o dobro de núcleos, provavelmente
+a aplicação "sleepSort.c" se beneficiaria muito mais, já que se utiliza de fork() para
+programação multithread.

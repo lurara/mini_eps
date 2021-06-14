@@ -2,7 +2,7 @@
  */
 
 char * NAME = "Lara Ayumi Nagamatsu";
-char * NUSP = "9910568	";
+char * NUSP = "9910568";
 
 /* 
  * To test the code, invoke it with the test argument
